@@ -11,23 +11,19 @@ const useTopMenu:UseTopMenu = () => {
         console.log('welcome to TopMenu')
     }, [])
 
-    const createNote = () => {
-        dbApi.createNote()
-    }
+
     const editNote = () => {
         return
     }
-    const deleteNote = () => {
-        return
-    }
+
     const filter = (text:string) => {
         return
     }
 
     const api = {
-        createNote:createNote,
+        createNote:dbApi.createNote,
         editNote:editNote,
-        deleteNote:deleteNote,
+        deleteNote:dbApi.deleteNote,
         filter:filter,
     }
 

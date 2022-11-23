@@ -3,6 +3,7 @@ import * as I from '../../store/storeInterfaces'
 import { useLiveQuery } from "dexie-react-hooks";
 import { UseDb } from './db.props'
 import { db } from './DbNotes'
+import dataStore from '../../store/dataStore';
 
 export const useDb:UseDb = () => {    
     const notes = useLiveQuery(
@@ -17,15 +18,17 @@ export const useDb:UseDb = () => {
         let now = new Date()
         db.notes.add({
             date: now.getTime(),
-            title: 'Старая заметка',
+            title: 'Новая заметка',
             body: 'Старая заметка. Съешь еще этих сладких французских будок.'
         })
     }
-    const editNote = (note:I.Note) => {
-        return
+    const editNote = () => {
+        dataStore.setEditedMode(!dataStore.editedMode)
     }
     const deleteNote = () => {
-        return
+        db.notes
+            .where("id").equals(dataStore.selectedId)
+            .delete()
     }
 
     const state = {
