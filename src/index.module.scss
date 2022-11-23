@@ -1,10 +1,9 @@
 @import './global.modules.scss';
 
-html, body, body>div {
+html, body, body>div, section, main {
     height: 100%;
 }
 body {
-    background: $main_bg_color;
     padding: 0%;
     margin: 0;
     font-family: 'Roboto';
