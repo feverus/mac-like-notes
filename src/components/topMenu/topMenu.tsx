@@ -29,7 +29,7 @@ export function TopMenu() {
 					<Button shape="default" className={C.btns} icon={<DeleteOutlined />} 
 						onClick={()=>api.deleteNote()} />
 					<Button shape="default" className={C.btns} icon={<EditOutlined />} 
-						onClick={()=>api.editNote()} />
+						onClick={()=>api.setEditedMode()} />
 				</Space>
 
 				<Space size='small'>

@@ -2,7 +2,7 @@ import * as I from '../../store/storeInterfaces';
 
 export type ApiType = {
     createNote: () => void;
-    editNote: () => void;
+    setEditedMode: () => void;
     deleteNote: () => void;
     filter: (text:string) => void;
 };

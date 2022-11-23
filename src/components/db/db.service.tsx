@@ -23,7 +23,7 @@ export const useDb:UseDb = () => {
         })
     }
     const editNote = () => {
-        dataStore.setEditedMode(!dataStore.editedMode)
+       return
     }
     const deleteNote = () => {
         db.notes

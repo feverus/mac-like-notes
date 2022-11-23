@@ -12,12 +12,12 @@ const useSidebar:UseSidebar = () => {
     }, [dataStore.filterText])
 
     useEffect(() => {
-        console.log('first')
-        if (dbState.notes!==undefined) chooseNote(dbState.notes[0].id as number)
+        if (dbState.notes!==undefined && dbState.notes.length>0)  chooseNote(dbState.notes[0].id as number)
     }, [dbState.notes])
 
     const chooseNote = (id:number) => {
         dataStore.setSelectedId(id)
+        dataStore.setEditedMode(false)
     }
 
     const state = {

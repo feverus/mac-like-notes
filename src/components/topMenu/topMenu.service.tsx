@@ -12,8 +12,8 @@ const useTopMenu:UseTopMenu = () => {
     }, [])
 
 
-    const editNote = () => {
-        return
+    const setEditedMode = () => {
+        dataStore.setEditedMode(!dataStore.editedMode)
     }
 
     const filter = (text:string) => {
@@ -22,7 +22,7 @@ const useTopMenu:UseTopMenu = () => {
 
     const api = {
         createNote:dbApi.createNote,
-        editNote:editNote,
+        setEditedMode:setEditedMode,
         deleteNote:dbApi.deleteNote,
         filter:filter,
     }

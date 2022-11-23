@@ -4,14 +4,18 @@ import C from './sidebar.module.scss'
 import ListItem from '../listItem';
 import useWorkSpace from './workSpace.service';
 
+
 export function WorkSpace() {
 	const [state, api] = useWorkSpace() 
 
 	console.log(state)
 
-	return (state.note===undefined)?
-		<></>
-	:
+	if (state.note===undefined) 
+		return (<></>)
+		
+	return (dataStore.editedMode) ?
+		<>режим редактирования</>
+		:
 		<>{state.note.title}<br/>
 		{state.note.body}</>
 
