@@ -1,0 +1,15 @@
+GET http://site
+
+
+
+###
+
+POST http://2ite
+content-type: application/json
+
+{
+  "foo": "bar",
+}
+
+
+###
