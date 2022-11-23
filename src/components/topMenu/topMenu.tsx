@@ -13,27 +13,39 @@ export function TopMenu() {
 		]
 
 	return (
-		<Space>
-				<Button shape="circle" className={C.leftRoundBtn+' '+C.red} />
-				<Button shape="circle" className={C.leftRoundBtn+' '+C.yellow} />
-				<Button shape="circle" className={C.leftRoundBtn+' '+C.green} />
+		<Space size='middle'>
+				<Space size='small'>
+					<Button shape="circle" className={C.leftRoundBtn+' '+C.red} />
+					<Button shape="circle" className={C.leftRoundBtn+' '+C.yellow} />
+					<Button shape="circle" className={C.leftRoundBtn+' '+C.green} />
+				</Space>
 
-				<Segmented options={segmentedOptions} key={"Segmented1"} onResize onResizeCapture/>
+				<Segmented options={segmentedOptions} key={"Segmented1"} onResize={()=>{return}} onResizeCapture={()=>{return}} />
 
-				<Button shape="default" className={C.btns} icon={<LayoutOutlined />} />
-				<Button shape="default" className={C.btns} icon={<CopyOutlined />} />
-				<Button shape="default" className={C.btns} icon={<DeleteOutlined />} />
-				<Button shape="default" className={C.btns} icon={<EditOutlined />} />
+				<Space size='small'>
+					<Button shape="default" className={C.btns} icon={<LayoutOutlined />} />
+					<Button shape="default" className={C.btns} icon={<CopyOutlined />}
+						onClick={()=>api.createNote()} />
+					<Button shape="default" className={C.btns} icon={<DeleteOutlined />} 
+						onClick={()=>api.deleteNote()} />
+					<Button shape="default" className={C.btns} icon={<EditOutlined />} 
+						onClick={()=>api.editNote()} />
+				</Space>
 
-				<Button shape="default" className={C.btns} icon={<><LockOutlined /><DownOutlined /></>} />
-				<Button shape="default" className={C.btns} icon={<TableOutlined />} />
-				<Button shape="default" className={C.btns} icon={<ClockCircleOutlined />} />
-				<Button shape="default" className={C.btns} icon={<FontSizeOutlined />} />	
+				<Space size='small'>
+					<Button shape="default" className={C.btns} icon={<><LockOutlined /><DownOutlined /></>} />
+					<Button shape="default" className={C.btns} icon={<TableOutlined />} />
+					<Button shape="default" className={C.btns} icon={<ClockCircleOutlined />} />
+					<Button shape="default" className={C.btns} icon={<FontSizeOutlined />} />	
+				</Space>
 
-				<Button shape="default" className={C.btns} icon={<><PictureOutlined /><DownOutlined /></>} />
-				<Button shape="default" className={C.btns} icon={<TeamOutlined />} />
-				<Button shape="default" className={C.btns} icon={<UploadOutlined />} />
-				<Input prefix={<><SearchOutlined /><DownOutlined /></>} />
+				<Space size='small'>
+					<Button shape="default" className={C.btns} icon={<><PictureOutlined /><DownOutlined /></>} />
+					<Button shape="default" className={C.btns} icon={<TeamOutlined />} />
+					<Button shape="default" className={C.btns} icon={<UploadOutlined />} />
+					<Input prefix={<><SearchOutlined /><DownOutlined /></>} 
+						onChange={el => api.filter(el.target.value)}/>
+				</Space>
 		</Space>
 	)
 }

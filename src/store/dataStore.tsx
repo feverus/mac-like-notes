@@ -1,21 +1,25 @@
-import {makeAutoObservable, observable, action, autorun} from 'mobx';
+import {makeAutoObservable, observable, action} from 'mobx';
 import * as I from './storeInterfaces'
 
 export class DataStore {
     selectedId:number = 0
-    filteredNotes:Array<I.Note> = []
+    filterText:string = ''
 
     constructor() {
         makeAutoObservable(this, {
             selectedId: observable,
-            filteredNotes: observable,
-            setSelectedId: action
+            filterText: observable,
+            setSelectedId: action,
+            setFilterText: action,
         })
-        autorun(() => console.log('dataStore autorun'));
     }
     
     setSelectedId(id:number) {
         this.selectedId = id
+    }
+
+    setFilterText(text:string) {
+        this.filterText = text
     }
 }
 

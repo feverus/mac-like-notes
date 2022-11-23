@@ -1,12 +1,16 @@
 import * as I from '../../store/storeInterfaces';
 
+export type StateType = {
+    notes: I.Note[] | undefined;
+};
+
 export type ApiType = {
     createNote: () => void;
     editNote: () => void;
     deleteNote: () => void;
-    filter: (text:string) => void;
 };
 
-export type UseTopMenu = () => [
+export type UseDb = () => [
+    state: StateType,
     api: ApiType
 ];
