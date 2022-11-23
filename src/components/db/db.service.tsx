@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import * as I from '../../store/storeInterfaces'
 import { useLiveQuery } from "dexie-react-hooks";
 import { UseDb } from './db.props'
 import { db } from './DbNotes'
@@ -13,14 +14,14 @@ export const useDb:UseDb = () => {
     }, [])
 
     const createNote = () => {
-        let date = new Date()
+        let now = new Date()
         db.notes.add({
-            date: date.getTime(),
-            title: 'Новая заметка',
-            body: ''
+            date: now.getTime(),
+            title: 'Старая заметка',
+            body: 'Старая заметка. Съешь еще этих сладких французских будок.'
         })
     }
-    const editNote = () => {
+    const editNote = (note:I.Note) => {
         return
     }
     const deleteNote = () => {

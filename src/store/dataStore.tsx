@@ -3,6 +3,7 @@ import * as I from './storeInterfaces'
 
 export class DataStore {
     selectedId:number = 0
+    editedMode:boolean = false;
     filterText:string = ''
 
     constructor() {
@@ -11,6 +12,7 @@ export class DataStore {
             filterText: observable,
             setSelectedId: action,
             setFilterText: action,
+            setEditedMode: action,
         })
     }
     
@@ -20,6 +22,10 @@ export class DataStore {
 
     setFilterText(text:string) {
         this.filterText = text
+    }
+
+    setEditedMode(on:boolean) {
+        this.editedMode = on
     }
 }
 

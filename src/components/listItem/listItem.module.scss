@@ -1,0 +1,31 @@
+@import '../../global.modules.scss';
+
+
+.block {
+    height: 4*$unit;
+    width: 240px;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    border: $borderForSidebar;
+    margin: 0;
+    &.selected {
+        background: linear-gradient(to bottom, #ffffff 0%, #dfe0de 100%) !important;
+    }
+    .title {
+        font-weight: 600;
+    }
+    .snippet {
+        display: flex;
+        .date {
+            font-weight: 400;
+            padding-right: 10px;
+        }
+        .body {
+            white-space: nowrap; /* Отменяем перенос текста */
+            overflow: hidden; /* Обрезаем содержимое */
+            text-overflow: ellipsis;
+        }
+    }
+}

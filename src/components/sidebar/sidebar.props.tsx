@@ -1,14 +1,14 @@
 import * as I from '../../store/storeInterfaces';
 
 export type StateType = {
-    sample: number;
+    filteredNotes: I.Note[] | undefined
 };
 
 export type ApiType = {
-    sampleApi: () => void;
+    chooseNote: (id:number) => void;
 };
 
-export type UseMain = () => [
+export type UseSidebar = () => [
     state: StateType,
     api: ApiType
 ];
