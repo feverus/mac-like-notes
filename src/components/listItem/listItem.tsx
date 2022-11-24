@@ -6,11 +6,19 @@ type Props = {note: I.Note, selected: boolean}
 export default function ListItem ({note, selected}: Props) {
     const now = new Date()
     const noteDate = new Date(note.date)
-
+    const dateToShowOptions:Intl.DateTimeFormatOptions = {
+        day: "numeric",
+        month: "numeric",
+        year: "numeric",
+    }
+    const timeToShowOptions:Intl.DateTimeFormatOptions = {
+        hour: "numeric",
+        minute: "numeric",
+    }
     let showDate = (((now.getTime() - note.date) < 24*60*60*1000) && (now.getDay()===noteDate.getDay()))?
-        noteDate.getHours()+':'+noteDate.getMinutes()
+        noteDate.toLocaleTimeString("ru", timeToShowOptions)
         :
-        noteDate.getDate()+'.'+noteDate.getMonth()+'.'+noteDate.getFullYear()
+        noteDate.toLocaleDateString("ru", dateToShowOptions)
 
     return (
         <div className={C.block+((selected) ? ' '+C.selected:'')}>

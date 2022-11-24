@@ -10,10 +10,6 @@ export const useDb:UseDb = () => {
         () => db.notes.toArray()
     )
 
-    useEffect(() => {
-        console.log('welcome to main')
-    }, [])
-
     const createNote = () => {
         let now = new Date()
         db.notes.add({
@@ -22,13 +18,21 @@ export const useDb:UseDb = () => {
             body: 'Старая заметка. Съешь еще этих сладких французских будок.'
         })
     }
-    const editNote = () => {
-       return
+    const editNote = (field: string, value: string) => {
+        if (field==='body')
+            db.notes
+                .where({id: dataStore.selectedId})
+                .modify({'body': value})
+        if (field==='title')
+            db.notes
+                .where({id: dataStore.selectedId})
+                .modify({'title': value})
     }
     const deleteNote = () => {
         db.notes
             .where("id").equals(dataStore.selectedId)
-            .delete()
+            .delete() 
+        dataStore.setSelectedId(0)       
     }
 
     const state = {

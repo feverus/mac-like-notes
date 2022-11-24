@@ -6,7 +6,7 @@ export type StateType = {
 
 export type ApiType = {
     createNote: () => void;
-    editNote: (note:I.Note) => void;
+    editNote: (field: string, value: string) => void;
     deleteNote: () => void;
 };
 

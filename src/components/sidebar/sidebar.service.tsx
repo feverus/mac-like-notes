@@ -11,9 +11,11 @@ const useSidebar:UseSidebar = () => {
         console.log('filterText changed> ' + dataStore.filterText)
     }, [dataStore.filterText])
 
+    
     useEffect(() => {
-        if (dbState.notes!==undefined && dbState.notes.length>0)  chooseNote(dbState.notes[0].id as number)
+        if (dbState.notes!==undefined && dbState.notes.length>0 && dataStore.selectedId===0)  chooseNote(dbState.notes[0].id as number)
     }, [dbState.notes])
+    
 
     const chooseNote = (id:number) => {
         dataStore.setSelectedId(id)
