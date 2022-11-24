@@ -7,6 +7,8 @@
     justify-content: flex-start;
     align-items: center;   
     .leftRoundBtn {
+        border: 1px solid #11111121;
+        border-radius: 50%;
         width: $unit !important;
         min-width: $unit !important;
         height: $unit !important;
@@ -20,6 +22,9 @@
         &.green {
             background-color: #62c455 !important;
         }
+        &:hover {
+            filter: brightness(110%);
+        }
     }
     
     .btns {
@@ -32,6 +37,11 @@
         flex: 1 1 auto;
         display: flex;
         justify-content: flex-end;
+    }
+    @media (max-width: 1090px) {
+        .finderINputDiv {
+            justify-content: start;
+        }
     }
 }
 

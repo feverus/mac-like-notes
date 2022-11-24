@@ -21,17 +21,32 @@
     padding: 0 $unit;
 }
 
-@media (max-width: 1130px) {
+@media (max-width: 1090px) {
     .header {
         height: 6*$unit  !important;
     }
 }
-@media (max-width: 730px) {
+@media (max-width: 700px) {
+    section {
+        height: auto !important;
+    }
     .header {
         height: 9*$unit  !important;
     }
+    .sider, .content {
+        width: 100%  !important;
+        max-width: 100%  !important;
+        flex: 1 0 100%   !important;
+        height: auto !important;
+        &>div {
+            height: auto !important;
+        }
+    }
+    .workSection {
+        flex-direction: column  !important;
+    }
 }
-@media (max-width: 510px) {
+@media (max-width: 375px) {
     .header {
         height: 15*$unit  !important;
     }

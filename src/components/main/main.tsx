@@ -14,7 +14,7 @@ export function Main() {
 			<Header className={C.header} >
 				<TopMenu />
 			</Header>
-			<Layout>
+			<Layout className={C.workSection}>
 				<Sider className={C.sider} 
 					width='240px'>
 					<Sidebar />

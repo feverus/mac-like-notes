@@ -14,10 +14,10 @@ export function TopMenu() {
 
 	return (
 		<div className={C.body}>
-				<Space size='small'>
-					<Button shape="circle" className={C.leftRoundBtn+' '+C.red} />
-					<Button shape="circle" className={C.leftRoundBtn+' '+C.yellow} />
-					<Button shape="circle" className={C.leftRoundBtn+' '+C.green} />
+				<Space size='small' wrap>
+					<button className={C.leftRoundBtn+' '+C.red} />
+					<button className={C.leftRoundBtn+' '+C.yellow} />
+					<button className={C.leftRoundBtn+' '+C.green} />
 					<Segmented options={segmentedOptions} key={"Segmented1"} onResize={()=>{return}} onResizeCapture={()=>{return}} />
 					<Button shape="default" className={C.btns} icon={<LayoutOutlined />} />
 					<Button shape="default" className={C.btns} icon={<CopyOutlined />}
@@ -33,7 +33,7 @@ export function TopMenu() {
 				</Space>
 
 				<div className={C.finderINputDiv}>
-					<Space size='small'>
+					<Space size='small' wrap>
 						<Space size='small'>
 							<Button shape="default" className={C.btns} icon={<><PictureOutlined /><DownOutlined /></>} />
 							<Button shape="default" className={C.btns} icon={<TeamOutlined />} />
@@ -43,7 +43,7 @@ export function TopMenu() {
 							<Input
 								prefix={<><SearchOutlined /><DownOutlined /></>} 
 								onChange={el => api.filter(el.target.value)}
-								placeholder="Search"
+								placeholder="Search"								
 							/>
 						</Space>
 					</Space>
