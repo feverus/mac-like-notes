@@ -1,11 +1,11 @@
 import dataStore from '../../store/dataStore'
 import useTopMenu from "./topMenu.service";
 import C from './topMenu.module.scss'
-import { Button, Input, Segmented , Space, Divider  } from 'antd'
+import { Button, Input, Segmented , Space, Modal  } from 'antd'
 import { AppstoreOutlined, BarsOutlined, LayoutOutlined, CopyOutlined, DeleteOutlined, EditOutlined, LockOutlined, DownOutlined, TableOutlined, ClockCircleOutlined, FontSizeOutlined, PictureOutlined, TeamOutlined, UploadOutlined, SearchOutlined} from '@ant-design/icons'
 
 export function TopMenu() {
-	const [api] = useTopMenu() 
+	const [state, api] = useTopMenu() 
 
 	const segmentedOptions = [
 		{ value:'List', icon: <BarsOutlined />, label:'' },
@@ -23,7 +23,7 @@ export function TopMenu() {
 					<Button shape="default" className={C.btns} icon={<CopyOutlined />}
 						onClick={()=>api.createNote()} />
 					<Button shape="default" className={C.btns} icon={<DeleteOutlined />} 
-						onClick={()=>api.deleteNote()} />
+						onClick={()=>api.showDeleteDialog(true)} />
 					<Button shape="default" className={C.btns} icon={<EditOutlined />} 
 						onClick={()=>api.setEditedMode()} />
 					<Button shape="default" className={C.btns} icon={<><LockOutlined /><DownOutlined /></>} />
@@ -48,6 +48,16 @@ export function TopMenu() {
 						</Space>
 					</Space>
 				</div>
+
+				<Modal
+					title='Удалить заметку?'
+					open={state.deleteDialogOpen}
+					onOk={()=>api.deleteNote()}
+					onCancel={()=>api.showDeleteDialog(false)}
+				>
+				</Modal>
 		</div>
+
+		
 	)
 }
