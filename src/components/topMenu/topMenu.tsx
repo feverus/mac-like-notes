@@ -1,7 +1,6 @@
-import dataStore from '../../store/dataStore'
 import useTopMenu from "./topMenu.service";
 import C from './topMenu.module.scss'
-import { Button, Input, Segmented , Space, Modal  } from 'antd'
+import { Button, Input, Segmented , Space, Modal } from 'antd'
 import { AppstoreOutlined, BarsOutlined, LayoutOutlined, CopyOutlined, DeleteOutlined, EditOutlined, LockOutlined, DownOutlined, TableOutlined, ClockCircleOutlined, FontSizeOutlined, PictureOutlined, TeamOutlined, UploadOutlined, SearchOutlined} from '@ant-design/icons'
 
 export function TopMenu() {
@@ -12,36 +11,49 @@ export function TopMenu() {
 		{ value:'Kanban',  icon: <AppstoreOutlined />, label:'' }
 		]
 
+	const downIcon = (
+		<DownOutlined className={C.downIcon} />
+	)
+
 	return (
 		<div className={C.body}>
 				<Space size='small' wrap>
 					<button className={C.leftRoundBtn+' '+C.red} />
 					<button className={C.leftRoundBtn+' '+C.yellow} />
 					<button className={C.leftRoundBtn+' '+C.green} />
+
 					<Segmented options={segmentedOptions} key={"Segmented1"} onResize={()=>{return}} onResizeCapture={()=>{return}} />
+
 					<Button shape="default" className={C.btns} icon={<LayoutOutlined />} />
+
 					<Button shape="default" className={C.btns} icon={<CopyOutlined />}
-						onClick={()=>api.createNote()} />
+						onClick={()=>api.createNote()} 
+						title="Создать новую записку" />
+					
 					<Button shape="default" className={C.btns} icon={<DeleteOutlined />} 
-						onClick={()=>api.showDeleteDialog(true)} />
+						onClick={()=>api.showDeleteDialog(true)} 
+						title="Удалить выбранную записку" />
+
 					<Button shape="default" className={C.btns} icon={<EditOutlined />} 
-						onClick={()=>api.setEditedMode()} />
-					<Button shape="default" className={C.btns} icon={<><LockOutlined /><DownOutlined /></>} />
+						onClick={()=>api.setEditedMode()} 
+						title="Редактировать записку" />
+
+					<Button shape="default" className={C.btns} icon={<><LockOutlined />{downIcon}</>} />
 					<Button shape="default" className={C.btns} icon={<TableOutlined />} />
 					<Button shape="default" className={C.btns} icon={<ClockCircleOutlined />} />
 					<Button shape="default" className={C.btns} icon={<FontSizeOutlined />} />	
 				</Space>
 
-				<div className={C.finderINputDiv}>
+				<div className={C.finderInputDiv}>
 					<Space size='small' wrap>
 						<Space size='small'>
-							<Button shape="default" className={C.btns} icon={<><PictureOutlined /><DownOutlined /></>} />
+							<Button shape="default" className={C.btns} icon={<><PictureOutlined />{downIcon}</>} />
 							<Button shape="default" className={C.btns} icon={<TeamOutlined />} />
 							<Button shape="default" className={C.btns} icon={<UploadOutlined />} />
 						</Space>
 						<Space size='small'>
 							<Input
-								prefix={<><SearchOutlined /><DownOutlined /></>} 
+								prefix={<><SearchOutlined />{downIcon}</>} 
 								onChange={el => api.filter(el.target.value)}
 								placeholder="Search"								
 							/>

@@ -1,5 +1,3 @@
-import dataStore from '../../store/dataStore'
-import useMain from "./main.service";
 import C from './main.module.scss'
 import { Layout } from 'antd'
 import TopMenu from '../topMenu';

@@ -1,5 +1,12 @@
 @import '../../global.modules.scss';
 
+:global(.ant-btn >span+.anticon) {
+    margin-inline-start: 2px;
+}
+:global(.ant-input-prefix>span) {
+    margin-inline-end: 2px !important;
+}
+
 .body {
     display: flex;
     flex-wrap: wrap;
@@ -26,20 +33,22 @@
             filter: brightness(110%);
         }
     }
-    
+    .downIcon{
+        transform: scale(0.8) !important;
+    }
     .btns {
         width: 3*$unit !important;
         height: 2*$unit !important;
         margin: ($unit/2) 0;
         background-color: #f4f4f4 !important;
     }    
-    .finderINputDiv {
+    .finderInputDiv {
         flex: 1 1 auto;
         display: flex;
         justify-content: flex-end;
     }
     @media (max-width: 1090px) {
-        .finderINputDiv {
+        .finderInputDiv {
             justify-content: start;
         }
     }

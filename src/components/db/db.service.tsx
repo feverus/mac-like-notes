@@ -1,9 +1,8 @@
-import { useMemo, useEffect, useState } from 'react'
-import * as I from '../../store/storeInterfaces'
-import { useLiveQuery } from "dexie-react-hooks";
+import { useEffect, useState } from 'react'
+import { useLiveQuery } from "dexie-react-hooks"
 import { UseDb } from './db.props'
 import { db } from './DbNotes'
-import dataStore from '../../store/dataStore';
+import dataStore from '../../store/dataStore'
 
 export const useDb:UseDb = () => {  
     const notes = useLiveQuery(
@@ -67,8 +66,4 @@ export const useDb:UseDb = () => {
     return (
         [state, api]
     )
-}
-
-function updateBd(): any {
-    throw new Error('Function not implemented.');
 }

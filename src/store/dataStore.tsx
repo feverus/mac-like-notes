@@ -1,5 +1,4 @@
 import {makeAutoObservable, observable, action} from 'mobx';
-import * as I from './storeInterfaces'
 
 export class DataStore {
     selectedId:number = 0

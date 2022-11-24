@@ -15,18 +15,18 @@ export function WorkSpace() {
 		'База заметок пуста':
 		'Ничего не найдено'
 
-	if (state.note===undefined) 
-		return (
-			<Space>
-				<Title level={2} className={C.delay}>{message}</Title>
-			</Space>
-		)
+	if (state.note===undefined) return (
+		<Space>
+			<Title level={2} className={C.delay}>{message}</Title>
+		</Space>
+	)
 		
 	return (
 		<Space direction='vertical' className={C.body}>
 			<Title level={3} className={C.center}>
 				{state.dateToShow}
 			</Title>
+			
 			{(dataStore.editedMode) ?
 			<>		
 				<Input addonBefore="Заголовок"
@@ -44,8 +44,7 @@ export function WorkSpace() {
 					{state.note.title}
 				</Text>
 				<div dangerouslySetInnerHTML={{__html: marked.parse(state.note.body)}} />
-			</>
-			}
+			</>}
 		</Space>
 	)
 }

@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react'
-import * as I from '../../store/storeInterfaces'
+import { useState } from 'react'
 import dataStore from '../../store/dataStore'
 import { UseTopMenu } from './topMenu.props'
 import { useDb } from '../db'
