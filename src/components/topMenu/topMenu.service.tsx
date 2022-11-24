@@ -7,17 +7,12 @@ import { useDb } from '../db'
 const useTopMenu:UseTopMenu = () => {    
     const [dbState, dbApi] = useDb()
 
-    useEffect(() => {
-        console.log('welcome to TopMenu')
-    }, [])
-
-
     const setEditedMode = () => {
         dataStore.setEditedMode(!dataStore.editedMode)
     }
 
     const filter = (text:string) => {
-        return
+        dataStore.setFilterText(text)
     }
 
     const api = {

@@ -1,25 +1,37 @@
 @import '../../global.modules.scss';
 
-
-.leftRoundBtn {
-    width: $unit !important;
-    min-width: $unit !important;
-    height: $unit !important;
-    line-height: $unit !important;
-    &.red {
-        background-color: #ec6b60 !important;
+.body {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;   
+    .leftRoundBtn {
+        width: $unit !important;
+        min-width: $unit !important;
+        height: $unit !important;
+        line-height: $unit !important;
+        &.red {
+            background-color: #ec6b60 !important;
+        }
+        &.yellow {
+            background-color: #f5be4f !important;
+        }
+        &.green {
+            background-color: #62c455 !important;
+        }
     }
-    &.yellow {
-        background-color: #f5be4f !important;
-    }
-    &.green {
-        background-color: #62c455 !important;
+    
+    .btns {
+        width: 3*$unit !important;
+        height: 2*$unit !important;
+        margin: ($unit/2) 0;
+        background-color: #f4f4f4 !important;
+    }    
+    .finderINputDiv {
+        flex: 1 1 auto;
+        display: flex;
+        justify-content: flex-end;
     }
 }
 
-.btns {
-    width: 3*$unit !important;
-    height: 2*$unit !important;
-    margin: ($unit/2) 0;
-    background-color: #f4f4f4 !important;
-}

@@ -1,10 +1,15 @@
 @import '../../global.modules.scss';
 
+%cut {
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
 
 .block {
     height: 4*$unit;
     width: 240px;
-    padding: 20px 30px;
+    padding: $unit 30px;
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -15,17 +20,17 @@
     }
     .title {
         font-weight: 600;
+        @extend %cut;
     }
     .snippet {
         display: flex;
+        font-size: smaller;        
         .date {
             font-weight: 400;
             padding-right: 10px;
         }
         .body {
-            white-space: nowrap; /* Отменяем перенос текста */
-            overflow: hidden; /* Обрезаем содержимое */
-            text-overflow: ellipsis;
+            @extend %cut;
         }
     }
 }

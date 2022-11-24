@@ -1,23 +1,41 @@
-import { useState, useEffect } from 'react'
+import { useMemo, useEffect, useState } from 'react'
 import * as I from '../../store/storeInterfaces'
 import { useLiveQuery } from "dexie-react-hooks";
 import { UseDb } from './db.props'
 import { db } from './DbNotes'
 import dataStore from '../../store/dataStore';
 
-export const useDb:UseDb = () => {    
+export const useDb:UseDb = () => {  
     const notes = useLiveQuery(
-        () => db.notes.toArray()
+        () => {return db.notes.toArray()}
     )
+    
+    const [filteredNotes, setFilteredNotes] = useState(notes)
+
+    useEffect(() => {
+        setFilteredNotes(notes)
+    }, [notes])
+
+    useEffect(() => { 
+        let temp = filteredNotes
+        if (notes!==undefined) {
+            temp = notes.filter(({body, title}) => 
+                body.toUpperCase().includes(dataStore.filterText.toUpperCase()) || title.toUpperCase().includes(dataStore.filterText.toUpperCase())               
+            )
+            dataStore.setSelectedId(0)
+            setFilteredNotes(temp)            
+        }
+    }, [dataStore.filterText])
 
     const createNote = () => {
         let now = new Date()
         db.notes.add({
             date: now.getTime(),
             title: 'Новая заметка',
-            body: 'Старая заметка. Съешь еще этих сладких французских будок.'
+            body: ''
         })
     }
+
     const editNote = (field: string, value: string) => {
         if (field==='body')
             db.notes
@@ -28,6 +46,7 @@ export const useDb:UseDb = () => {
                 .where({id: dataStore.selectedId})
                 .modify({'title': value})
     }
+
     const deleteNote = () => {
         db.notes
             .where("id").equals(dataStore.selectedId)
@@ -36,7 +55,7 @@ export const useDb:UseDb = () => {
     }
 
     const state = {
-        notes: notes,
+        notes: filteredNotes,
     }
 
     const api = {
@@ -48,4 +67,8 @@ export const useDb:UseDb = () => {
     return (
         [state, api]
     )
+}
+
+function updateBd(): any {
+    throw new Error('Function not implemented.');
 }

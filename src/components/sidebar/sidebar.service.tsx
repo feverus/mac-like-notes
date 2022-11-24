@@ -6,14 +6,10 @@ import { useDb } from '../db'
 
 const useSidebar:UseSidebar = () => {    
     const [dbState, dbApi] = useDb()
-
-    useEffect(() => {
-        console.log('filterText changed> ' + dataStore.filterText)
-    }, [dataStore.filterText])
-
     
     useEffect(() => {
-        if (dbState.notes!==undefined && dbState.notes.length>0 && dataStore.selectedId===0)  chooseNote(dbState.notes[0].id as number)
+        if (dbState.notes!==undefined && dbState.notes.length>0 && dataStore.selectedId===0) 
+            chooseNote(dbState.notes[0].id as number)
     }, [dbState.notes])
     
 
@@ -23,7 +19,7 @@ const useSidebar:UseSidebar = () => {
     }
 
     const state = {
-        filteredNotes:dbState.notes
+        notes:dbState.notes
     }
 
     const api = {

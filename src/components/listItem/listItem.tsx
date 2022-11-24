@@ -15,7 +15,7 @@ export default function ListItem ({note, selected}: Props) {
         hour: "numeric",
         minute: "numeric",
     }
-    let showDate = (((now.getTime() - note.date) < 24*60*60*1000) && (now.getDay()===noteDate.getDay()))?
+    const showDate = (((now.getTime() - note.date) < 24*60*60*1000) && (now.getDay()===noteDate.getDay()))?
         noteDate.toLocaleTimeString("ru", timeToShowOptions)
         :
         noteDate.toLocaleDateString("ru", dateToShowOptions)

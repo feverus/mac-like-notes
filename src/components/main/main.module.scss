@@ -1,5 +1,9 @@
 @import '../../global.modules.scss';
 
+:global(.ant-space-item) {
+    padding: 0 !important;
+}
+
 .header {
     height: 3*$unit !important;
     line-height: 3*$unit !important;
@@ -15,4 +19,20 @@
 }
 .content {
     padding: 0 $unit;
+}
+
+@media (max-width: 1130px) {
+    .header {
+        height: 6*$unit  !important;
+    }
+}
+@media (max-width: 730px) {
+    .header {
+        height: 9*$unit  !important;
+    }
+}
+@media (max-width: 510px) {
+    .header {
+        height: 15*$unit  !important;
+    }
 }

@@ -15,20 +15,19 @@ const useWorkSpace:UseWorkSpace = () => {
         minute: "numeric",
     }
 
-    useEffect(() => {
-        console.log('workSpace> ' + dataStore.filterText)
-    }, [dataStore.filterText])
-
     let note, dateToShow
     if (dbState.notes!==undefined) {        
         note = dbState.notes.find(item => (item.id===dataStore.selectedId))
         if (note!==undefined) {
-            const noteDate = new Date(note .date) 
+            const noteDate = new Date(note.date) 
             dateToShow = noteDate.toLocaleDateString("ru", dateToShowOptions)
-        } else dateToShow = ''
+        } else {
+            note = dbState.notes[0]
+            dateToShow = '.'
+        }
     } else {
         note = undefined
-        dateToShow = ''
+        dateToShow = '.'
     }
 
     const state = {

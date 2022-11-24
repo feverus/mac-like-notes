@@ -9,13 +9,18 @@ import C from './workSpace.module.scss'
 const { Title, Text } = Typography
 
 export function WorkSpace() {
-	const [state, api] = useWorkSpace() 
+	const [state, api] = useWorkSpace()
 
-	if (state.note===undefined) return (
-		<Space>
-			<Title level={2}>База заметок пуста</Title>
-		</Space>
-	)
+	let message = (dataStore.filterText==='')?
+		'База заметок пуста':
+		'Ничего не найдено'
+
+	if (state.note===undefined) 
+		return (
+			<Space>
+				<Title level={2} className={C.delay}>{message}</Title>
+			</Space>
+		)
 		
 	return (
 		<Space direction='vertical' className={C.body}>

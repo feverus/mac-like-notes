@@ -7,10 +7,9 @@ import ListItem from '../listItem';
 export function Sidebar() {
 	const [state, api] = useSidebar() 
 
-	console.log(state)
 	return (
 		<>
-		{state.filteredNotes?.map((item, num) => 
+		{state.notes?.map((item, num) => 
 			<button 
 				onClick={()=>api.chooseNote(item.id as number)}
 				key={num}

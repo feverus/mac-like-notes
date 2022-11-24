@@ -10,10 +10,6 @@ const useMain:UseMain = () => {
 
     const [data, setData] = useState<number>(1)
 
-    useEffect(() => {
-        console.log('welcome to main')
-    }, [])
-
     const sampleApi = () => {
         return
     }
