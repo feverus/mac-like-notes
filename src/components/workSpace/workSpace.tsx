@@ -1,10 +1,12 @@
 import dataStore from '../../store/dataStore'
 import useWorkSpace from './workSpace.service'
 import SimpleMDE from "react-simplemde-editor"
+import easymde from 'easymde';
 import { marked } from 'marked';
 import { Input, Space, Typography } from 'antd';
 import "easymde/dist/easymde.min.css"
 import C from './workSpace.module.scss'
+import { useMemo } from 'react';
 
 const { Title, Text } = Typography
 
@@ -14,6 +16,12 @@ export function WorkSpace() {
 	let message = (dataStore.filterText==='')?
 		'База заметок пуста':
 		'Ничего не найдено'
+
+	const options = useMemo(() => {
+		return {
+			status: ["cursor"]
+		} as easymde.Options;
+		}, []);
 
 	if (!state.note) return (
 		<Space>
@@ -36,6 +44,7 @@ export function WorkSpace() {
 				<SimpleMDE
 					value={state.note.body}
 					onChange={(value: string) => api.editNote('body', value)}
+					options={options}
 				/>
 			</>	
 			:

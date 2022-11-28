@@ -1,7 +1,9 @@
 @import './global.modules.scss';
 
-html, body, body>div, section, main {
+
+html, body, body>#root, section, main {
     height: 100%;
+    background-color: $bg;
 }
 html {
     overflow-y: scroll;

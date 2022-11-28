@@ -1,5 +1,7 @@
 @import '../../global.modules.scss';
 
+$siderWidth: 240px;
+
 :global(.ant-space-item) {
     padding: 0 !important;
 }
@@ -13,46 +15,56 @@
 }
 .sider, .content {
     background-color: #f9f9f7 !important;
+    position: absolute !important;
+    transition-duration: 1s;
 }
 .sider {
-    transform: translateX(-100%);
-    transition-duration: 1s;
+    left: -$siderWidth;
+    width: $siderWidth;    
     border-right: $borderForSidebar;
     &.show {
-        transform: translateX(0);
+        left: 0;
     }
 }
 .content {
-    padding: 0 $unit;
-}
-
-@media (max-width: 1090px) {
-    .header {
-        height: 6*$unit  !important;
+    padding: 0 $unit;    
+    width: 100% !important;
+    left: 0;
+    &.show {
+        width: calc(100% - $siderWidth) !important;
+        left: $siderWidth;
     }
 }
+
+
 @media (max-width: 700px) {
     section {
         height: auto !important;
     }
     .header {
-        height: 9*$unit  !important;
+        height: 6*$unit !important;
     }
     .sider, .content {
-        width: 100%  !important;
-        max-width: 100%  !important;
-        flex: 1 0 100%   !important;
-        height: auto !important;
-        &>div {
+        &.show {
+            position: relative !important;
+            width: 100%  !important;
+            max-width: 100%  !important;
+            flex: 1 0 100%   !important;
             height: auto !important;
+            left: 0 !important;
+            &>div {
+                height: auto !important;
+            }
         }
     }
     .workSection {
-        flex-direction: column  !important;
+        flex-direction: column !important;
     }
 }
 @media (max-width: 375px) {
     .header {
-        height: 15*$unit  !important;
+        :global(.ant-space) {
+            flex-wrap: nowrap !important;
+        }
     }
 }

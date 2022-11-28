@@ -22,10 +22,9 @@ export function TopMenu() {
 					<button className={C.leftRoundBtn+' '+C.yellow} />
 					<button className={C.leftRoundBtn+' '+C.green} />
 
-					<Segmented options={segmentedOptions} key={"Segmented1"} onResize={()=>{return}} onResizeCapture={()=>{return}} />
-
 					<Button shape="default" className={C.btns} icon={<LayoutOutlined />} 
-					onClick={api.toggleSider}/>
+						onClick={api.toggleSider}
+						title="Показать/скрыть список заметок" />
 
 					<Button shape="default" className={C.btns} icon={<CopyOutlined />}
 						onClick={api.createNote} 
@@ -39,19 +38,10 @@ export function TopMenu() {
 						onClick={api.setEditedMode} 
 						title="Редактировать записку" />
 
-					<Button shape="default" className={C.btns} icon={<><LockOutlined />{downIcon}</>} />
-					<Button shape="default" className={C.btns} icon={<TableOutlined />} />
-					<Button shape="default" className={C.btns} icon={<ClockCircleOutlined />} />
-					<Button shape="default" className={C.btns} icon={<FontSizeOutlined />} />	
 				</Space>
 
 				<div className={C.finderInputDiv}>
 					<Space size='small' wrap>
-						<Space size='small'>
-							<Button shape="default" className={C.btns} icon={<><PictureOutlined />{downIcon}</>} />
-							<Button shape="default" className={C.btns} icon={<TeamOutlined />} />
-							<Button shape="default" className={C.btns} icon={<UploadOutlined />} />
-						</Space>
 						<Space size='small'>
 							<Input
 								prefix={<><SearchOutlined />{downIcon}</>} 
@@ -61,6 +51,22 @@ export function TopMenu() {
 						</Space>
 					</Space>
 				</div>
+
+<div className={C.hidden}>
+	<Segmented options={segmentedOptions} key={"Segmented1"} onResize={()=>{return}} onResizeCapture={()=>{return}} />
+
+	<Button shape="default" className={C.btns} icon={<><LockOutlined />{downIcon}</>} />
+	<Button shape="default" className={C.btns} icon={<TableOutlined />} />
+	<Button shape="default" className={C.btns} icon={<ClockCircleOutlined />} />
+	<Button shape="default" className={C.btns} icon={<FontSizeOutlined />} />	
+
+	<Space size='small'>
+		<Button shape="default" className={C.btns} icon={<><PictureOutlined />{downIcon}</>} />
+		<Button shape="default" className={C.btns} icon={<TeamOutlined />} />
+		<Button shape="default" className={C.btns} icon={<UploadOutlined />} />
+	</Space>
+</div>
+				
 
 				<Modal
 					title='Удалить заметку?'
