@@ -15,7 +15,12 @@
     background-color: #f9f9f7 !important;
 }
 .sider {
+    transform: translateX(-100%);
+    transition-duration: 1s;
     border-right: $borderForSidebar;
+    &.show {
+        transform: translateX(0);
+    }
 }
 .content {
     padding: 0 $unit;

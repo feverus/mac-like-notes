@@ -24,10 +24,11 @@ export function TopMenu() {
 
 					<Segmented options={segmentedOptions} key={"Segmented1"} onResize={()=>{return}} onResizeCapture={()=>{return}} />
 
-					<Button shape="default" className={C.btns} icon={<LayoutOutlined />} />
+					<Button shape="default" className={C.btns} icon={<LayoutOutlined />} 
+					onClick={api.toggleSider}/>
 
 					<Button shape="default" className={C.btns} icon={<CopyOutlined />}
-						onClick={()=>api.createNote()} 
+						onClick={api.createNote} 
 						title="Создать новую записку" />
 					
 					<Button shape="default" className={C.btns} icon={<DeleteOutlined />} 
@@ -35,7 +36,7 @@ export function TopMenu() {
 						title="Удалить выбранную записку" />
 
 					<Button shape="default" className={C.btns} icon={<EditOutlined />} 
-						onClick={()=>api.setEditedMode()} 
+						onClick={api.setEditedMode} 
 						title="Редактировать записку" />
 
 					<Button shape="default" className={C.btns} icon={<><LockOutlined />{downIcon}</>} />
@@ -66,6 +67,8 @@ export function TopMenu() {
 					open={state.deleteDialogOpen}
 					onOk={()=>api.deleteNote()}
 					onCancel={()=>api.showDeleteDialog(false)}
+					okText='Да'
+					cancelText='Нет'
 				>
 				</Modal>
 		</div>

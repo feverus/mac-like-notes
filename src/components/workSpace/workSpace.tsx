@@ -15,7 +15,7 @@ export function WorkSpace() {
 		'База заметок пуста':
 		'Ничего не найдено'
 
-	if (state.note===undefined) return (
+	if (!state.note) return (
 		<Space>
 			<Title level={2} className={C.delay}>{message}</Title>
 		</Space>

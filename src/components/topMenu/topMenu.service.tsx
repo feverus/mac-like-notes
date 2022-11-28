@@ -4,11 +4,15 @@ import { UseTopMenu } from './topMenu.props'
 import { useDb } from '../db'
 
 const useTopMenu:UseTopMenu = () => {    
-    const [dbState, dbApi] = useDb()
+    const [dbApi] = useDb()
     const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
 
     const setEditedMode = () => {
         dataStore.setEditedMode(!dataStore.editedMode)
+    }
+
+    const toggleSider = () => {
+        dataStore.setShowSider(!dataStore.showSider)
     }
 
     const filter = (text:string) => {
@@ -30,6 +34,7 @@ const useTopMenu:UseTopMenu = () => {
     const api = {
         createNote:dbApi.createNote,
         setEditedMode:setEditedMode,
+        toggleSider:toggleSider,
         deleteNote:deleteNote,
         showDeleteDialog:showDeleteDialog,
         filter:filter,

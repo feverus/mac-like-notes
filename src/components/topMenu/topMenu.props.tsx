@@ -5,6 +5,7 @@ export type StateApi = {
 }
 
 export type ApiType = {
+    toggleSider: () => void;
     createNote: () => void;
     setEditedMode: () => void;
     deleteNote: () => void;

@@ -5,11 +5,11 @@ import ListItem from '../listItem';
 
 
 export function Sidebar() {
-	const [state, api] = useSidebar() 
+	const [api] = useSidebar() 
 
 	return (
 		<>
-		{state.notes?.map((item, num) => 
+		{dataStore.notes?.map((item, num) => 
 			<button 
 				onClick={()=>api.chooseNote(item.id as number)}
 				key={num}

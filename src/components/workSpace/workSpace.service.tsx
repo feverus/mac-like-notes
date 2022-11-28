@@ -5,7 +5,7 @@ import { UseWorkSpace } from './workSpace.props'
 import { useDb } from '../db'
 
 const useWorkSpace:UseWorkSpace = () => {    
-    const [dbState, dbApi] = useDb()
+    const [dbApi] = useDb()
 
     const dateToShowOptions:Intl.DateTimeFormatOptions = {
         day: "numeric",
@@ -16,13 +16,13 @@ const useWorkSpace:UseWorkSpace = () => {
     }
 
     let note, dateToShow
-    if (dbState.notes!==undefined) {        
-        note = dbState.notes.find(item => (item.id===dataStore.selectedId))
+    if (dataStore.notes!==undefined) {        
+        note = dataStore.notes.find(item => (item.id===dataStore.selectedId))
         if (note!==undefined) {
             const noteDate = new Date(note.date) 
             dateToShow = noteDate.toLocaleDateString("ru", dateToShowOptions)
         } else {
-            note = dbState.notes[0]
+            note = dataStore.notes[0]
             dateToShow = '.'
         }
     } else {

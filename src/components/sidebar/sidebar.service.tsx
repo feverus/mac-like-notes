@@ -1,25 +1,35 @@
+import { useLiveQuery } from 'dexie-react-hooks'
+import { db } from '../db/DbNotes'
 import { useEffect } from 'react'
-import * as I from '../../store/storeInterfaces'
 import dataStore from '../../store/dataStore'
 import { UseSidebar } from './sidebar.props'
-import { useDb } from '../db'
 
-const useSidebar:UseSidebar = () => {    
-    const [dbState, dbApi] = useDb()
+const useSidebar:UseSidebar = () => {     
+    const notes = useLiveQuery(
+        () => {return db.notes.toArray()}
+    )
     
     useEffect(() => {
-        if (dbState.notes!==undefined && dbState.notes.length>0 && dataStore.selectedId===0) 
-            chooseNote(dbState.notes[0].id as number)
-    }, [dbState.notes])
+        let temp = notes
+        if ((dataStore.filterText!=='') && (notes!==undefined)) {
+            temp = notes.filter(({body, title}) => 
+                body.toUpperCase().includes(dataStore.filterText.toUpperCase()) || title.toUpperCase().includes(dataStore.filterText.toUpperCase())               
+            )
+            chooseNote(0)
+        }  
+
+        if (temp) dataStore.setNotes(temp)
+    }, [notes, dataStore.filterText])
+    
+    useEffect(() => {
+        if (dataStore.notes!==undefined && dataStore.notes.length>0 && dataStore.selectedId===0)
+            chooseNote(dataStore.notes[0].id as number)
+    }, [dataStore.notes])
     
 
-    const chooseNote = (id:number) => {
-        dataStore.setSelectedId(id)
+    const chooseNote = (id:number) => {        
         dataStore.setEditedMode(false)
-    }
-
-    const state = {
-        notes:dbState.notes
+        dataStore.setSelectedId(id)
     }
 
     const api = {
@@ -27,7 +37,7 @@ const useSidebar:UseSidebar = () => {
     }
 
     return (
-        [state, api]
+        [api]
     )
 }
 export default useSidebar
